@@ -7,8 +7,9 @@ app = Flask(__name__)
 def home():
     user_name = request.args.get("name", "Developer")
     return render_template("index.html", user_name=user_name)
-
-
+@app.route("Hello")
+def hello():
+    return {"Hi Nagendra,how are you"}
 @app.route("/health")
 def health():
     return {"status": "ok", "service": "frontend-flask-app"}
