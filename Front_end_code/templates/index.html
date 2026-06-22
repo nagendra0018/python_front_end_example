@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flask Frontend App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">Flask Frontend</div>
+      <nav aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#status">Status</a>
+        <a href="/health">Health</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Python + Flask</p>
+          <h1>Hello, {{ user_name }}.</h1>
+          <p class="summary">
+            This frontend is rendered by Flask using an HTML template, CSS, and
+            JavaScript served from the static folder.
+          </p>
+          <form class="name-form" method="get" action="/">
+            <label for="name">Preview with your name</label>
+            <div class="input-row">
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Enter name"
+              />
+              <button type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section
+        id="features"
+        class="content-grid"
+        aria-label="Application features"
+      >
+        <article>
+          <h2>Template Rendering</h2>
+          <p>Flask passes backend values into HTML using Jinja syntax.</p>
+        </article>
+        <article>
+          <h2>Static Files</h2>
+          <p>
+            CSS and JavaScript are loaded with Flask's
+            <code>url_for</code> helper.
+          </p>
+        </article>
+        <article>
+          <h2>API Route</h2>
+          <p>
+            The <code>/health</code> route returns JSON for quick backend
+            checks.
+          </p>
+        </article>
+      </section>
+
+      <section id="status" class="status-panel">
+        <h2>Frontend Status</h2>
+        <p id="statusText">Checking application status...</p>
+        <button id="refreshStatus" type="button">Refresh Status</button>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
